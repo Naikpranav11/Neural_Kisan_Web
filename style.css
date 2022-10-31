@@ -1,0 +1,56 @@
+*{
+    margin: 0%;
+}
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+body{
+    overflow-x: hidden;
+}
+#Hero img{
+    width:100vw;
+    height: 80vh;
+    object-fit: cover;
+    position: absolute;
+    top: 0%;
+    z-index: -1;
+    scale: 1.1;
+    filter:blur(1px);
+}
+nav{
+    background: black;
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    font-family: 'Lexend', sans-serif;
+
+}
+nav ul{
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+nav h1{
+    font-family: 'Lobster', cursive;
+
+}
+#Hero{
+    width: 100%;
+    color: aliceblue;
+    font-family: 'Lexend', sans-serif;
+}
+#Hero H1{
+    font-size: 5rem;
+    font-family: 'Lobster', cursive;
+
+}
+#Hero p{
+ 
+  
+    width: 70%;
+    font-size: 1rem;
+}
