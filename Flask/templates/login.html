@@ -16,11 +16,25 @@
             <button type="submit">Submit</button>
         </form>
     </section>
-  
+    <img src="{{url_for('static', filename='img/a.jpg')}}" id="bg"/>
+
 </body>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;900&display=swap');
-    *{
+#bg{
+width: 100vw;
+height: 100vh;
+position: absolute;
+object-fit: cover;
+top: 0;
+z-index: -1;
+
+filter: blur(4px);
+} 
+::selection{
+    background: rgb(248, 156, 51);
+}
+*{
         margin: 0%;
         font-family: 'Poppins', sans-serif;
 
@@ -38,19 +52,25 @@
         display: flex;
         flex-direction: column;
         gap: .8rem;
+        align-items: center;
     }
     form h1{
+        color: rgb(0, 0, 0);
         font-size: 2.3rem;
         margin: 1rem;
+        width: 100vw;
+
     }
     form input{
+        width: 30rem;
         height: 40px;
         border: 1px solid black;
         border-radius: 20px;
         text-align: center;
-        animation: vibrate 1s infinite;
+
     }
     form button{
+        width: 30rem;
         height: 40px;
         background: rgb(219, 233, 254);
 
@@ -59,19 +79,8 @@
 transition: 400ms;
     }
     form button:hover{
-        background: rgb(0, 26, 255);
+        background: rgb(0, 255, 128);
     }
-    @keyframes vibrate {
-        0%,100%{
-            translateX:0px;
-        }
-        50%{
-            translateX:-10px;
-        }
-        25%,75%{
-            translateX:10px;
-        }
-        
-    }
+    
 </style>
 </html>
