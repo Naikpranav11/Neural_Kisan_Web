@@ -9,52 +9,52 @@
 <body>
     <h1 >Welcome {{  Username  }}</h1>
     <div id="data">
-        <canvas id="myChart" style="width:100%;max-width:45vw"></canvas>
-        <canvas id="myChart2" style="width:100%;max-width:45vw"></canvas>
-        
-    </div>
+        <canvas id="myChart" class="chart" ></canvas>
+        <input type="range" name="" id="r" oninput="update()">
+   </div>
 </body>
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script>
+    const slider = document.getElementById("r");
+    
+    let ValueQ=40;
+    var Temperature = [ValueQ,100-ValueQ];
+    update()
 
-    var xValues = [1,2,3,4,5,6,7,8,9,10];
-    var Temperature = [7,8,8,9,9,9,10,11,14,14,15];
-    var Temperature2 = [72,53,8,9,9,9,10,11,14,14,15];
 
+    function update(){
+        ValueQ=slider.value;
+    Temperature = [ValueQ , 100-ValueQ];  
+    
     new Chart("myChart", {
       type: "doughnut",
       data: {
-        labels: xValues,
+        labels: ['Nothing','Temp'],
         datasets: [{
-      data: Temperature,
-      borderColor: "blue",
-      fill: false
-    }]
-      },
-      options:{
-        legend:{display:false}
-      }
-    });
+            data: Temperature,
+            
+            backgroundColor:['rgb(255, 99, 132)']
+                }]
+            },
+options:{
+    animation : false,
+    legend:{display:false},
+    events:false
+}
+});
 
-    
-    new Chart("myChart2", {
-      type: "doughnut",
-      data: {
-        labels: xValues,
-        datasets: [{
-      data: Temperature2,
-      fill: false
-    }]
-      },
-      options:{
-        legend:{display:false}
-      }
-    });
+
+    }
+
     
     </script>
 </html>
 <style>
+    .chart{
+        width:100%;
+        max-width:20rem
+    }
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;900&display=swap');
     *{
         margin: 0%;

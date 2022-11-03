@@ -3,11 +3,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return(redirect(url_for("login")))
 
 @app.route('/Login' , methods=["POST","GET"])
 def login():
-    Usernames=['Rhys','Sai','Pranav','Kapil','Ralph']
+    Usernames=['Rhys','Sai','Pranav','Kapil','Ralph',]
     Passwords=['123','123','123','123']
     if request.method == "POST":   
         Username=request.form['Username']
