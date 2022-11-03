@@ -7,11 +7,52 @@
     <title>Admin</title>
 </head>
 <body>
-    <h1>Welcome {{ Username }}</h1>
-    <div id="data1">
+    <h1 >Welcome {{  Username  }}</h1>
+    <div id="data">
+        <canvas id="myChart" style="width:100%;max-width:45vw"></canvas>
+        <canvas id="myChart2" style="width:100%;max-width:45vw"></canvas>
         
     </div>
 </body>
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script>
+
+    var xValues = [1,2,3,4,5,6,7,8,9,10];
+    var Temperature = [7,8,8,9,9,9,10,11,14,14,15];
+    var Temperature2 = [72,53,8,9,9,9,10,11,14,14,15];
+
+    new Chart("myChart", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+      data: Temperature,
+      borderColor: "blue",
+      fill: false
+    }]
+      },
+      options:{
+        legend:{display:false}
+      }
+    });
+
+    
+    new Chart("myChart2", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+      data: Temperature2,
+      fill: false
+    }]
+      },
+      options:{
+        legend:{display:false}
+      }
+    });
+    
+    </script>
 </html>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;900&display=swap');
@@ -20,11 +61,10 @@
         font-family: 'Poppins', sans-serif;
 
     }
-    #data1{
-        width: 10rem;
-        height:10rem;
-      
-        border: 1px solid black;
-        border-radius: 10rem;
+    #data{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
+    
 </style>
