@@ -11,9 +11,9 @@
         
         <form action="{{ url_for('login') }}" method="post">
             <h1>Login</h1>
-            <input type="text" name="Username" id="" placeholder="Username">
-            <input type="password" name="Password" id="" placeholder="Password">
-            <button type="submit">Submit</button>
+            <input type="text" name="Username" id="i1" placeholder="Username">
+            <input type="password" name="Password" id="i2" placeholder="Password">
+            <button type="submit" >Submit</button>
         </form>
     </section>
     <img src="{{url_for('static', filename='img/a.jpg')}}" id="bg"/>
@@ -29,7 +29,7 @@ object-fit: cover;
 top: 0;
 z-index: -1;
 
-filter: blur(4px);
+filter: blur(0px);
 } 
 ::selection{
     background: rgb(248, 156, 51);
@@ -48,11 +48,16 @@ filter: blur(4px);
     }
     form{
         text-align: center;
-        width: 70%;
+        max-width: 35rem;
         display: flex;
         flex-direction: column;
         gap: .8rem;
         align-items: center;
+        background: rgba(248, 248, 248, 0.236);
+        border: 1px solid black;
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        border-radius: 20px;
     }
     form h1{
         color: rgb(0, 0, 0);
@@ -83,4 +88,5 @@ transition: 400ms;
     }
     
 </style>
+
 </html>
