@@ -12,8 +12,10 @@
     
 <section id="dataWrapper">
     <div id="liveFeedCam" class="card" >
+        <input type="url" name="" id="" placeholder="Live Video Url">
         <img src="{{ url_for('video_feed') }}" id="Camstream">
     </div>
+    
     <div id="Temperature" class="card">
       
         <canvas id="myChart" class="chart" ></canvas>
@@ -85,6 +87,10 @@
         resize: both;
         box-shadow: 0 0 1rem rgba(48, 48, 48, 0.212);
         
+    }
+    .card input{
+        position: absolute;
+        bottom: 1rem;
     }
     #Camstream{
 width: 100%;

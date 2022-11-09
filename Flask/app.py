@@ -1,6 +1,6 @@
 from flask import Flask,render_template,request,url_for,redirect,Response
 import cv2
-
+import math
 app = Flask(__name__)
 
 @app.route('/')
@@ -37,7 +37,7 @@ def gen_frames():
         if not success:
             break
         else:
-            ret, buffer = cv2.imencode('.jpg', frame)
+            ret, buffer = cv2.imencode('.jpg', (frame))
             frame = buffer.tobytes()
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
