@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
@@ -17,14 +20,15 @@
         <img src="{{ url_for('video_feed') }}" id="Camstream">
     </div>
     
+    <div id="Moisture" class="card">
+        <canvas id="Prediction" class="chart" ></canvas>
+        <h4 id="PredictionText" class="TextUnderGraph">Prediction Loading</h4>
+
+    </div>
     <div id="Temperature" class="card">
       <h1>{{ data }}</h1>
         <canvas id="myChart" class="chart" ></canvas>
     
-    </div>
-    <div id="Moisture" class="card">
-        <canvas id="myChart2" class="chart" ></canvas>
-
     </div>
     <div id="CurrentProcesses" class="card" >
         <canvas id="myChart3" class="chart" ></canvas>
@@ -38,6 +42,12 @@
 </body>
 
 <style>
+    .TextUnderGraph{
+        display: flex;
+        justify-content: center;
+     padding: .5rem;
+
+    }
  #addmore{
     display: flex;
     align-items: center;
@@ -65,8 +75,6 @@
     rotate:180deg;
 }
 
-     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;900&display=swap');
-     @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
      *{
         margin: 0%;
         font-family: 'Poppins', sans-serif;
@@ -93,7 +101,7 @@
     .chart{
         padding: 0px;
         margin: 0%;
-        width: 30rem;
+        width: 28rem;
      
     }
 #welcome{
@@ -142,41 +150,75 @@ border-radius: inherit;
 <script src="/static/javascript/chart.js"></script>
 
 <script>
-    
+    const rand=[]
+    const idxLine=[]
+    var labelsDoughnut=[]
+    var ValueDoughnut=[]
+    var PredictionDoughnut
+    var i=0
+function fetchPredictionData(APIuRL){
 
-   
+    fetch(APIuRL)
+    
+        .then(res=>res.json())
+        .then(data=>{
+            //LINE
+            //i++
+            //console.log(data)
+            //rand.push(data['VALUE'])
+            //idx.push(i)
+            //if(rand.length>20){
+            //    rand.shift()
+            //    idx.shift()
+            //}
+
+            labelsDoughnut=[data['LABEL'],'UNKNOWN']
+            ValueDoughnut=[data['MAX'],data['MIN']]
+    
+            document.getElementById('PredictionText').innerText=data['LABEL']
+
+
+            updateGraph()
+        })
+        
+}
+
 function addCard(){
 alert('Add Card')
 }
-    
+
+updateGraph()
+setInterval(fetchPredictionData,1000,'/Result')
+function updateGraph(){
     
     new Chart("myChart", {
       type: "line",
       data: {
-        labels: [1,2,3,4,5,6,7],
+        labels: idxLine,
         datasets: [{
-            data: [100,80,43,60,75,76,23],
+            data: rand,
             
-            backgroundColor:['rgba(255, 99, 132,0)'],
-            tension:0
-                },{
-                    data:[43,33,54,32,54,24,54],
-                    backgroundColor:['rgba(10,100,250,0.7)']
+            backgroundColor:['rgba(255, 99, 132,1)'],
+          
                 }
             ]
             },
         options:{
             legend:{display:true},
+            animation: {
+        duration: 1, // general animation time
+    },
         }
-        });       
-        
-        new Chart("myChart2", {
+        });  
+   
+      new Chart("Prediction", {
       type: "doughnut",
       data: {
-        labels: ['Nothing','Temp','something','bfvf','dfsd','232','234234',534,33],
+        labels: labelsDoughnut,
         datasets: [
             {
-            data: [10,20,28,50,43,54,22,66,34],
+            data:  ValueDoughnut
+,
             
             backgroundColor:['rgb(255, 99, 132)']
                 }
@@ -185,9 +227,13 @@ alert('Add Card')
             },
         options:{
             legend:{display:false},
+            animation: {
+        duration: 1, // general animation time
+    },
         }
         });   
-
+    }     
+    
         new Chart("myChart3", {
       type: "doughnut",
       data: {
@@ -205,8 +251,8 @@ alert('Add Card')
         }
         });   
 
+ 
 
-    
 
     
     </script>

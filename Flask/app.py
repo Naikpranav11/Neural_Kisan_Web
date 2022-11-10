@@ -67,9 +67,9 @@ data=[]
 def chart_data():
     
     def generate_random_data():  
-        while True:
-            data.append(random.random()) 
-            return json.dumps({'VALUE':random.random()})
+        
+        data.append(random.random()) 
+        return json.dumps({'VALUE':random.random()})
            
 
     return generate_random_data()
@@ -91,7 +91,7 @@ def classify(img,modelFile,labels):
         image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
         image = (image / 127.5) - 1
         probabilities = model.predict(image)
-        ret ={'LABEL':f'{labels[np.argmax(probabilities)]}','VALUE':f'{probabilities}'}
+        ret ={'LABEL':f'{labels[np.argmax(probabilities)]}','MAX':f'{np.max(probabilities)}','MIN':f'{np.min(probabilities)}'}
         json_dump=json.dumps(ret)
         return json_dump
 
