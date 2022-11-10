@@ -37,6 +37,8 @@ def Dash(Username):
 
 camera = cv2.VideoCapture(0)
 
+
+
 def gen_frames():  
     
     while True:
@@ -52,7 +54,7 @@ def gen_frames():
 
 @app.route('/Result')
 def res():
-    return Response(classify(camera,'Classification Model\keras_model.h5','Classification Model\labels.txt'),mimetype='text/plain')
+    return classify(camera,'Classification Model\keras_model.h5','Classification Model\labels.txt')
 
 
 @app.route('/video_feed')
@@ -61,17 +63,16 @@ def video_feed():
 
 data=[]
 
-@app.route('/chart_data')
+@app.route('/Random')
 def chart_data():
     
     def generate_random_data():  
         while True:
             data.append(random.random()) 
-            yield f'{random.random()},\n'
-            time.sleep(1)
+            return json.dumps({'VALUE':random.random()})
            
 
-    return Response(generate_random_data(),mimetype='text/plain')
+    return generate_random_data()
 
 
 def classify(img,modelFile,labels):
@@ -81,17 +82,18 @@ def classify(img,modelFile,labels):
         camera = img
 
         labels = open(labels, 'r').readlines()
-        while True:
+        
 
         
 
-            ret, image = camera.read()
-            image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
-            image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
-            image = (image / 127.5) - 1
-            probabilities = model.predict(image)
-
-            yield f'{labels[np.argmax(probabilities)]}'
+        ret, image = camera.read()
+        image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
+        image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
+        image = (image / 127.5) - 1
+        probabilities = model.predict(image)
+        ret ={'LABEL':f'{labels[np.argmax(probabilities)]}','VALUE':f'{probabilities}'}
+        json_dump=json.dumps(ret)
+        return json_dump
 
 
 

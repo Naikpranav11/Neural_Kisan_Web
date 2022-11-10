@@ -1,2 +1,2 @@
-0 Nothing
-1 Pop-It
+Nothing
+Pop-It
