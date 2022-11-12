@@ -55,6 +55,7 @@ def gen_frames():
 @app.route('/Result')
 def res():
     return classify(camera,'Classification Model\keras_model.h5','Classification Model\labels.txt')
+    #return {'LABEL':f'Something','MAX':f'10','MIN':f'20'}
 
 
 @app.route('/video_feed')
