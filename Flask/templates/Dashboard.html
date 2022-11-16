@@ -13,8 +13,12 @@
 <body>
     <section id="bg"></section>
     <h1 id="welcome" ><span>Welcome {{  Username  }}</span><span id="logo">NeuralKissan</span></h1>
-    
+    <template id="CARDTEMPLATE">
+        <div class="card" id="liveFeedCam" >
+            <canvas id="myChart3" class="chart" ></canvas>        </div>
+    </template>
 <section id="dataWrapper">
+
     <div id="liveFeedCam" class="card" >
         <!--<input type="url" name="" id="" placeholder="Live Video Url(WIP)">-->
         <img src="{{ url_for('video_feed') }}" id="Camstream">
@@ -34,10 +38,12 @@
         <canvas id="myChart3" class="chart" ></canvas>
 
     </div>
-    <div class="card" id="addmore" onclick="addCard()"><span class="material-symbols-outlined">
-        add 
-        </span>WIP</div>
+
+<div class="card " id="addmore" onclick="addCard()"><span class="material-symbols-outlined">
+    add 
+    </span></div>
 </section>
+
  
 </body>
 
@@ -49,6 +55,8 @@
 
     }
  #addmore{
+
+    width:15rem ;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,6 +117,7 @@
     justify-content: space-between;
     padding: 1rem;
 }
+
     #dataWrapper{
         padding: 1rem;
         display: flex;
@@ -148,7 +157,18 @@ border-radius: inherit;
 
 <script src="{{ url_for('static', filename='javascript/chart.js') }}"></script>
 <script src="/static/javascript/chart.js"></script>
+<script>
+    function addCard(){
 
+    const template=document.getElementById('CARDTEMPLATE')
+    const container=document.getElementById('dataWrapper')
+
+    content = template.content.cloneNode(true) 
+
+    container.appendChild(content)
+}
+
+</script>
 <script>
     const rand=[]
     const idxLine=[]
@@ -185,12 +205,9 @@ function fetchPredictionData(APIuRL){
         
 }
 
-function addCard(){
-alert('Add Card')
-}
 
 updateGraph()
-setInterval(fetchPredictionData,1000,'/Result')
+setInterval(fetchPredictionData,100000,'/Result')
 function updateGraph(){
     
     new Chart("myChart", {

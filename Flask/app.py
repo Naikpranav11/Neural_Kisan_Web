@@ -54,7 +54,7 @@ def gen_frames():
 
 @app.route('/Result')
 def res():
-    return classify(camera,'Classification Model\keras_model.h5','Classification Model\labels.txt')
+    return classify(camera,'Classification Model\V2.h5','Classification Model\labels.txt')
     #return {'LABEL':f'Something','MAX':f'10','MIN':f'20'}
 
 
@@ -92,7 +92,7 @@ def classify(img,modelFile,labels):
         image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
         image = (image / 127.5) - 1
         probabilities = model.predict(image)
-        ret ={'LABEL':f'{labels[np.argmax(probabilities)]}','MAX':f'{np.max(probabilities)}','MIN':f'{np.min(probabilities)}'}
+        ret ={'LABEL':f'{labels[np.argmax(probabilities)]}','MAX':f'{np.max(probabilities)}','MIN':f'{np.min(probabilities)}','ARRAY':f'{probabilities}'}
         json_dump=json.dumps(ret)
         return json_dump
 
