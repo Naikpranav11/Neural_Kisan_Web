@@ -12,7 +12,8 @@
 </head>
 <body>
     <section id="bg"></section>
-    <h1 id="welcome" ><span>Welcome {{  Username  }}</span><span id="logo">NeuralKissan</span></h1>
+    <h1 id="welcome" ><span>Welcome Rhys</span><span id="logo">NeuralKissan</span></h1>
+    <!-- <h1 id="welcome" ><span>Welcome {{  Username  }}</span><span id="logo">NeuralKissan</span></h1> -->
     
 <section id="dataWrapper">
     <div id="liveFeedCam" class="card" >
@@ -20,23 +21,29 @@
         <img src="{{ url_for('video_feed') }}" id="Camstream">
     </div>
     
-    <div id="Moisture" class="card">
+    <!-- <div id="Moisture" class="card">
         <canvas id="Prediction" class="chart" ></canvas>
         <h4 id="PredictionText" class="TextUnderGraph">Prediction Loading</h4>
 
-    </div>
+    </div> -->
     <div id="Temperature" class="card">
       <h1>{{ data }}</h1>
         <canvas id="myChart" class="chart" ></canvas>
     
     </div>
+
+   
+
     <div id="CurrentProcesses" class="card" >
         <canvas id="myChart3" class="chart" ></canvas>
 
     </div>
-    <div class="card" id="addmore" onclick="addCard()"><span class="material-symbols-outlined">
+    <div class="card" id="LightRGB">
+
+    </div>
+   <!-- <div class="card" id="addmore" onclick="addCard()"><span class="material-symbols-outlined">
         add 
-        </span>WIP</div>
+        </span>WIP</div>-->
 </section>
  
 </body>
@@ -147,6 +154,7 @@ border-radius: inherit;
 </style>
 
 <script src="{{ url_for('static', filename='javascript/chart.js') }}"></script>
+<script src="{{ url_for('static', filename='javascript/Data Processing.js') }}"></script>
 <script src="/static/javascript/chart.js"></script>
 
 <script>
@@ -190,15 +198,15 @@ alert('Add Card')
 }
 
 updateGraph()
-setInterval(fetchPredictionData,1000,'/Result')
+//setInterval(fetchPredictionData,1000,'/Result')
 function updateGraph(){
     
     new Chart("myChart", {
       type: "line",
       data: {
-        labels: idxLine,
+        labels: [1,2,3,4,5,6,7,8],
         datasets: [{
-            data: rand,
+            data: [10,2,3,3,4,5,3,7,2],
             
             backgroundColor:['rgba(255, 99, 132,1)'],
           
