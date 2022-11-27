@@ -93,7 +93,13 @@ def video_feed():
 data=[]
 
 
+##PRANAV ENTER CODE HERE
+@app.route('/Decision')
+def Decision_maker():
+    
+    return json.dumps()
 
+##PRANAV ENTER CODE HERE
 
 #def classify(img,modelFile,labels):
      # Load the model
