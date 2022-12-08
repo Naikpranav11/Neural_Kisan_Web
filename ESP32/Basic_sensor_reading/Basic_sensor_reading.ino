@@ -47,9 +47,6 @@ void Dht22()
     // Read temperature as Celsius (the default)
   float temp = dht.readTemperature();
 
-  // Read temperature as Fahrenheit (isFahrenheit = true)
-  float tempF = dht.readTemperature(true);
-
   // Read humidity
   float h = dht.readHumidity();
 
