@@ -186,15 +186,15 @@ function fetchPredictionData(APIuRL){
     
         .then(res=>res.json())
         .then(data=>{
-            //LINE
-            //i++
-            //console.log(data)
-            //rand.push(data['VALUE'])
-            //idx.push(i)
-            //if(rand.length>20){
-            //    rand.shift()
-            //    idx.shift()
-            //}
+            LINE
+            i++
+            console.log("hsuus")
+            rand.push(data['VALUE'])
+            idx.push(i)
+            if(rand.length>20){
+               rand.shift()
+               idx.shift()
+            }
 
             labelsDoughnut=[data['LABEL'],'UNKNOWN']
             
@@ -211,15 +211,16 @@ function fetchPredictionData(APIuRL){
 
 
 updateGraph()
-//setInterval(fetchPredictionData,1000,'/Result')
+setInterval(fetchPredictionData,1000,'/Result')
+setInterval(updateGraph,1000)
 function updateGraph(){
     
     new Chart("myChart", {
       type: "line",
       data: {
-        labels: [1,2,3,4,5,6,7,8],
+        labels: idxLine,
         datasets: [{
-            data: [10,2,3,3,4,5,3,7,2],
+            data: rand,
             
             backgroundColor:['rgba(255, 99, 132,1)'],
           

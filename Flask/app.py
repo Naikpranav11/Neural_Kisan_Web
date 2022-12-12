@@ -1,20 +1,13 @@
-from flask import Flask,render_template,request,url_for,redirect,Response,stream_with_context
-# import cv2
-from VideoProcessor import *
-import math
+from flask import Flask,render_template,request,url_for,redirect,Response
+import cv2
+from ImageClassifier import classify,gen_frames,camera,CamSrc
+
 import json
 import random
-import time
-import numpy as np
-import pandas as pd
-from sklearn import datasets
-from sklearn.model_selection import train_test_split
-from keras.models import load_model
-import joblib
+
 from DecisionMaker import *
 
-#from keras.models import load_model
-from datetime import datetime
+
 
 app = Flask(__name__)
 
@@ -91,4 +84,4 @@ def Decision_maker():
 
 
 if __name__ == '__main__':
-  app.run()
+  app.run(debug=True)

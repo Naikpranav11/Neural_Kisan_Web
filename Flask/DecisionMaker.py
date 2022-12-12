@@ -44,18 +44,3 @@ class DM:
 
 ##PRANAV ENTER CODE HERE
 
-def classify(img,modelFile,labels):
-     ##Load the model
-       model = load_model(modelFile)
-
-       camera = img
-
-       labels = open(labels, 'r').readlines()
-       ret, image = camera.read()
-       image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
-       image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
-       image = (image / 127.5) - 1
-       probabilities = model.predict(image)
-       ret ={'LABEL':f'{labels[np.argmax(probabilities)]}','MAX':f'{np.max(probabilities)}','MIN':f'{np.min(probabilities)}'}
-       json_dump=json.dumps(ret)
-       return json_dump
