@@ -81,7 +81,7 @@ def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
-##PRANAV ENTER CODE HERE
+
 @app.route('/Decision')
 def Decision_maker():
     dum=DM()
