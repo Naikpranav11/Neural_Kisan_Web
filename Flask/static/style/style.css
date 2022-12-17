@@ -22,6 +22,7 @@
   --CardBase:hsl(0, 0%, 2%);
   --headers:hsl(0, 0%, 0%);
   --text:white;
+  --link:rgb(177, 200, 248);
   --accent:#00FF6F ;
   --radius:.4rem;
   --Shadowoffset:.2rem;
@@ -43,6 +44,9 @@ body {
 }
 
 nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   z-index: 2;
   position: fixed;
   width: 100%;
@@ -58,32 +62,26 @@ nav h1 {
   text-indent: 1ch;
   color: var(--accent);
 }
-nav ul {
-  display: flex;
-  gap: 1rem;
-  list-style: none;
-  align-items: center;
-}
-nav ul a {
-  text-decoration: none;
-  color: aliceblue;
-}
 
 .card {
   border-radius: var(--radius);
   height: 13rem;
-  width: 20rem;
+  width: 23rem;
   background: var(--CardBase);
   overflow: hidden;
   box-shadow: var(--Shadowoffset) var(--Shadowoffset) 0;
   transition: 0.5s;
 }
 .card .cardTop {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   padding: 0.2rem;
   font-weight: 200;
   color: var(--text);
   background: var(--headers);
-  width: 20rem;
+  width: 100%;
   transition: 0.2s;
 }
 
@@ -92,37 +90,31 @@ main {
   display: flex;
 }
 
+a {
+  color: var(--link);
+  text-decoration: none;
+  padding-right: 1ch;
+}
+a:hover {
+  color: var(--accent);
+}
+
 #monitors {
   padding: 1rem;
   padding-right: 0rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  width: 42rem;
+  gap: 0.8rem;
+  width: 56vw;
 }
 
 #TerminalMonitor {
-  position: fixed;
-  right: 1%;
   padding-top: 1rem;
 }
 
 #Terminal {
-  border-radius: var(--radius);
   height: 36rem;
-  width: 40rem;
-  background: var(--CardBase);
-  overflow: hidden;
-  box-shadow: var(--Shadowoffset) var(--Shadowoffset) 0;
-  transition: 0.2s;
-}
-#Terminal .cardTop {
-  padding: 0.2rem;
-  font-weight: 200;
-  color: var(--text);
-  background: var(--headers);
-  width: 100%;
-  transition: 0.2s;
+  width: 40vw;
 }
 #Terminal pre {
   font-family: "Share Tech Mono", monospace;

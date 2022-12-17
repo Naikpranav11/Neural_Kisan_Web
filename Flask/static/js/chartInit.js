@@ -1,7 +1,7 @@
-const colors=['#4723FF','#23CAFF','#FF008A','#FF7923']
+const colors=['#4723FF','#23CAFF','#FF008A','#FF7923','#1eff00']
 let ctx = document.getElementById('TemperatureChart');
 let width =.6;
-let DataChart1= [1,3,7,6,3,9,11,0,-1,2]
+let DataChart1= [0]
 i=0;
 
 var TemperatureChart = new Chart(ctx, {
@@ -43,7 +43,7 @@ i++;
 
 
 ctx = document.getElementById('MoistureChart');
-Edata= [1,3,7,6,3,9,11,0,-1,2]
+Edata= [0]
 
 
 var MoistureChart = new Chart(ctx, {
@@ -82,7 +82,7 @@ i++;
 
 
 ctx = document.getElementById('pHChart');
-Edata= [1,3,7,6,3,9,11,0,-1,2]
+Edata= [0]
 
 
 var pHChart = new Chart(ctx, {
@@ -121,7 +121,7 @@ i++;
 
 
 ctx = document.getElementById('HumidityChart');
-Edata= [1,3,7,6,3,9,11,0,-1,2]
+Edata= [0]
 
 
 var HumidityChart = new Chart(ctx, {
@@ -160,7 +160,7 @@ i++;
 
 
 ctx = document.getElementById('AQIChart');
-Edata= [1,3,7,6,3,9,11,0,-1,2]
+Edata= [0]
 
 
 var AQIChart = new Chart(ctx, {

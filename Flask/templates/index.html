@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="/static/style/style.css">
     
   </head>
-  <body>
+  <body draggable="false">
 
     <div id="bg"></div>
     
     <nav>
       <h1>Neural Kissan</h1>
+      <h4><a href="../../NeuralKisssanDocumentation/my-app/src/app.html">Docs  </a></h4>
     </nav>
     <main>
 <section id="monitors">
@@ -53,7 +54,7 @@
 
 </section>
 <section id="TerminalMonitor">
-  <div id="Terminal">
+  <div id="Terminal" class="card">
     <h3 class="cardTop">Terminal</h3>
     <div>
     <pre>
@@ -87,9 +88,9 @@ Command: Add Water
 <script src="../static/js/chartInit.js"></script>
   <script>
 
-  let size=30;//size of array 
+  let size=50;//size of array 
    
-    setInterval(a,50)
+    setInterval(a,100)
     function a(){
       Update(TemperatureChart)
       Update(MoistureChart)
@@ -99,10 +100,10 @@ Command: Add Water
     }
     function Update(chart){
       
-      rand=(Math.random()*20-10)
+      rand=((Math.random()*2-1)/2)
       
       chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(rand);
+        dataset.data.push(rand+(dataset.data[dataset.data.length-1]));
         if(dataset.data.length>size){
           dataset.data.shift();
         }

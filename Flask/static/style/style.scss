@@ -8,6 +8,7 @@
 }
 ::selection{
     background: rgb(0, 119, 255);
+
 }
 ::-webkit-scrollbar{
    display: none;
@@ -17,6 +18,7 @@
     --CardBase:hsl(0, 0%, 2%);
     --headers:hsl(0, 0%, 0%);
     --text:white;
+    --link:rgb(177, 200, 248);
     --accent:#00FF6F ;
     --radius:.4rem;
     --Shadowoffset:.2rem;
@@ -40,6 +42,9 @@ body{
 }
 
 nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     z-index: 2;
     position: fixed;
     width: 100%;
@@ -54,16 +59,8 @@ nav{
     color: var(--text);
     height: 3.4rem;
     background: var(--headers);
-    ul{
-        display: flex;
-        gap: 1rem;
-        list-style: none;
-        align-items: center;
-        a{
-            text-decoration: none;
-            color: aliceblue;
-        }
-    }
+
+
     display: flex;
     align-items: center;
 }
@@ -72,16 +69,17 @@ nav{
 
     border-radius: var(--radius);
     height: 13rem;
-    width: 20rem;
+    width: 23rem;
     background: var(--CardBase);
     overflow: hidden;
     box-shadow: var(--Shadowoffset) var(--Shadowoffset) 0;
     .cardTop{
+        user-select: none;
         padding: .2rem;
         font-weight: 200;
         color: var(--text);
         background: var(--headers);
-        width: 20rem;
+        width: 100%;
         transition: .2s;
     }
     transition: .5s;
@@ -93,41 +91,40 @@ main{
     padding-top: 3rem;
     display: flex;
 }
+a{
+    color:var(--link);
+    text-decoration: none;
+    // text-align: end;
+    padding-right: 1ch;
+    &:hover{
+        color: var(--accent);
+    }
+    
+}
 #monitors{
  
     padding: 1rem;
     padding-right: 0rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: .8rem;
 
-    width: 42rem;
+    width: 56vw;
 
 }
 #TerminalMonitor{
-    position: fixed;
-    right: 1%;
+
+
     padding-top: 1rem;
-   
+
 
 }
 
 #Terminal{
-    border-radius: var(--radius);
+   
     height: 36rem;
-    width: 40rem;
-    background: var(--CardBase);
-    overflow: hidden;
-    box-shadow: var(--Shadowoffset) var(--Shadowoffset) 0;
-    .cardTop{
-        padding: .2rem;
-        font-weight: 200;
-        color: var(--text);
-        background: var(--headers);
-        width: 100%;
-        transition: .2s;
-    }
-    transition: .2s;
+    width: 40vw;
+    
   pre{
     font-family: 'Share Tech Mono', monospace;
     width:30rem;
