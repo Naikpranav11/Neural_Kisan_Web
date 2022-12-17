@@ -1,3 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+
+
 *{
+    font-family: 'Noto Sans Display', sans-serif;
     margin:0;
+}
+::selection{
+    background: rgb(0, 119, 255);
+}
+::-webkit-scrollbar{
+   display: none;
+}
+:root{
+    --base:hsl(0, 0%, 4%);
+    --CardBase:hsl(0, 0%, 2%);
+    --headers:hsl(0, 0%, 0%);
+    --text:white;
+    --accent:#00FF6F ;
+    --radius:.4rem;
+    --Shadowoffset:.2rem;
+    --code:rgb(158, 158, 158);
+}
+body{
+    background: var(--base);
+}
+#bg{
+    --opacityGraph:.04;
+    background-size: 2rem 2rem;
+    background-image:
+    linear-gradient(to right, rgba(128, 128, 128, var(--opacityGraph)) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(128, 128, 128, var(--opacityGraph)) 1px, transparent 1px);
+
+
+    position: fixed;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+}
+
+nav{
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0 var(--Shadowoffset) 2rem rgba(0, 0, 0, 0.54);
+    h1{
+        
+       
+        font-weight: 900;
+        text-indent: 1ch;
+        color: var(--accent);
+    }
+    color: var(--text);
+    height: 3.4rem;
+    background: var(--headers);
+    ul{
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        align-items: center;
+        a{
+            text-decoration: none;
+            color: aliceblue;
+        }
+    }
+    display: flex;
+    align-items: center;
+}
+
+.card{
+
+    border-radius: var(--radius);
+    height: 13rem;
+    width: 20rem;
+    background: var(--CardBase);
+    overflow: hidden;
+    box-shadow: var(--Shadowoffset) var(--Shadowoffset) 0;
+    .cardTop{
+        padding: .2rem;
+        font-weight: 200;
+        color: var(--text);
+        background: var(--headers);
+        width: 20rem;
+        transition: .2s;
+    }
+    transition: .5s;
+
+ 
+}
+
+main{
+    padding-top: 3rem;
+    display: flex;
+}
+#monitors{
+ 
+    padding: 1rem;
+    padding-right: 0rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    width: 42rem;
+
+}
+#TerminalMonitor{
+    position: fixed;
+    right: 1%;
+    padding-top: 1rem;
+   
+
+}
+
+#Terminal{
+    border-radius: var(--radius);
+    height: 36rem;
+    width: 40rem;
+    background: var(--CardBase);
+    overflow: hidden;
+    box-shadow: var(--Shadowoffset) var(--Shadowoffset) 0;
+    .cardTop{
+        padding: .2rem;
+        font-weight: 200;
+        color: var(--text);
+        background: var(--headers);
+        width: 100%;
+        transition: .2s;
+    }
+    transition: .2s;
+  pre{
+    font-family: 'Share Tech Mono', monospace;
+    width:30rem;
+    margin-top: .5rem;
+    margin-left: 1rem;
+    color: var(--code);
+    &::selection,span::selection{
+        background: rgb(255, 255, 255);
+        color: black;
+    }
+
+  }
+ 
+.highlight{
+    color: red;
+}
+ 
 }

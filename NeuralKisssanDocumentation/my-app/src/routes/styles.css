@@ -1,0 +1,21 @@
+*{
+	margin: 0%;
+	padding: 0%;
+}
+:root{
+	--link:rgb(0, 132, 255);
+	--radius:.3rem;
+	--accent:rgb(128, 247, 166);;
+}
+
+a{
+	color: white;
+	text-decoration: none;
+	transition: .2s;
+}
+a:hover{
+	color: var(--accent);
+}
+h4{
+	color:aliceblue
+}

@@ -2,27 +2,122 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Flask Dashboard</title>
+    <title>Dashboard</title>
     <link rel="stylesheet" href="{{url_for('static', filename='style/style.css')}}">
     <link rel="stylesheet" href="/static/style/style.css">
+    
   </head>
   <body>
-    <header>
-      <h1>Flask Dashboard</h1>
-    </header>
 
+    <div id="bg"></div>
+    
     <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/data">Data</a></li>
-      </ul>
+      <h1>Neural Kissan</h1>
     </nav>
-
     <main>
+<section id="monitors">
+  <div class="card">
+    <h3 class="cardTop">Temperature</h3>
+    <div>
+      <canvas id="TemperatureChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="cardTop">Moisture</h3>
+    <div>
+      <canvas id="MoistureChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="cardTop">pH</h3>
+    <div>
+      <canvas id="pHChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="cardTop">Humidity</h3>
+    <div>
+      <canvas id="HumidityChart"></canvas>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 class="cardTop">AQI</h3>
+    <div>
+      <canvas id="AQIChart"></canvas>
+    </div>
+  </div>
+
+</section>
+<section id="TerminalMonitor">
+  <div id="Terminal">
+    <h3 class="cardTop">Terminal</h3>
+    <div>
+    <pre>
+Plant: [ 'Tray 029','Row 2','Column 6']
+Sensor Data Updated.....
+API Fetched
+Processing Data [##########] 100%
+Summary: OK
+Command: Do Nothing
+<span class="highlight">$ NextPlant</span>
+Plant: [ 'Tray 029','Row 3','Column 1']
+Sensor Data Updated.....
+API Fetched
+Processing Data [##########] 100%
+Summary: Dry
+Command: Add Water
+<span class="highlight">$ NextPlant</span>
+
+
+
+    </pre>
+    </div>
+  </div>
+</section>
+
+   
 
     </main>
-
-
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../static/js/chartInit.js"></script>
+  <script>
+
+  let size=30;//size of array 
+   
+    setInterval(a,50)
+    function a(){
+      Update(TemperatureChart)
+      Update(MoistureChart)
+      Update(pHChart)
+      Update(HumidityChart)
+      Update(AQIChart)
+    }
+    function Update(chart){
+      
+      rand=(Math.random()*20-10)
+      
+      chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(rand);
+        if(dataset.data.length>size){
+          dataset.data.shift();
+        }
+     });
+     chart.update()
+
+
+      
+      
+    }
+    
+
+    
+
+
+ 
+  </script>
 </html>
