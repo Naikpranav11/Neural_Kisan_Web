@@ -1,5 +1,6 @@
 import json
 import requests
+import random
 from flask import Flask,render_template
 from Functions.getData import APIJSON,Instructions
 
@@ -20,3 +21,12 @@ def api():
 @app.route('/instructions/<param>/<cutoff>')
 def apiSend(param,cutoff):
     return json.dumps(Instructions(param,int(cutoff)))
+
+@app.route('/output')
+def Output():
+    Instr=Instructions('temperature',random.randint(0,200))
+    if(Instr!='Do Nothing'):
+        highlight='highlight'
+    else:
+        highlight=''
+    return json.dumps({'message':Instr,'option':highlight})

@@ -20,7 +20,7 @@
 :root {
   --base:hsl(0, 0%, 4%);
   --CardBase:hsl(0, 0%, 2%);
-  --headers:hsl(223, 95%, 16%);
+  --headers:hsl(0, 0%, 0%);
   --text:white;
   --link:rgb(177, 200, 248);
   --accent:#00FF6F ;
@@ -81,7 +81,7 @@ nav h1 {
   font-weight: 200;
   color: var(--text);
   background: var(--headers);
-  width: 100%;
+  width: inherit;
   transition: 0.2s;
 }
 
@@ -113,8 +113,14 @@ a:hover {
 }
 
 #Terminal {
-  height: 36rem;
+  height: 40rem;
   width: 40vw;
+  overflow: scroll;
+}
+#Terminal .cardTop {
+  position: absolute;
+  width: 39.5vw;
+  border-radius: var(--radius) var(--radius) 0 0;
 }
 #Terminal pre {
   font-family: "Share Tech Mono", monospace;

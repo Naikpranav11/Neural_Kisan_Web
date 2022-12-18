@@ -16,7 +16,7 @@
 :root{
     --base:hsl(0, 0%, 4%);
     --CardBase:hsl(0, 0%, 2%);
-    --headers:hsl(223, 95%, 16%);
+    --headers:hsl(0, 0%, 0%);
     --text:white;
     --link:rgb(177, 200, 248);
     --accent:#00FF6F ;
@@ -74,12 +74,13 @@ nav{
     overflow: hidden;
     box-shadow: var(--Shadowoffset) var(--Shadowoffset) 0;
     .cardTop{
+  
         user-select: none;
         padding: .2rem;
         font-weight: 200;
         color: var(--text);
         background: var(--headers);
-        width: 100%;
+        width: inherit;
         transition: .2s;
     }
     transition: .5s;
@@ -121,10 +122,18 @@ a{
 }
 
 #Terminal{
+    .cardTop{
+        position: absolute;
+        width: 39.5vw;
+        border-radius: var(--radius) var(--radius) 0 0;
+     
+        
+    }
    
-    height: 36rem;
+    height: 40rem;
     width: 40vw;
-    
+    overflow: scroll;
+
   pre{
     font-family: 'Share Tech Mono', monospace;
     width:30rem;
@@ -135,6 +144,7 @@ a{
         background: rgb(255, 255, 255);
         color: black;
     }
+   
 
   }
  
