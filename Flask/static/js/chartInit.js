@@ -1,7 +1,7 @@
 const colors=['#4723FF','#23CAFF','#FF008A','#FF7923','#1eff00']
 let ctx = document.getElementById('TemperatureChart');
 let width =.6;
-let DataChart1= [0]
+let DataChart1=[]
 i=0;
 
 var TemperatureChart = new Chart(ctx, {
@@ -13,7 +13,7 @@ var TemperatureChart = new Chart(ctx, {
       data: DataChart1,
       borderWidth: width,
       
-      tension: .5,
+      tension: 0.5,
       pointStyle:false,
     }]
   },

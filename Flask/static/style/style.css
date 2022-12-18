@@ -20,7 +20,7 @@
 :root {
   --base:hsl(0, 0%, 4%);
   --CardBase:hsl(0, 0%, 2%);
-  --headers:hsl(0, 0%, 0%);
+  --headers:hsl(223, 95%, 16%);
   --text:white;
   --link:rgb(177, 200, 248);
   --accent:#00FF6F ;

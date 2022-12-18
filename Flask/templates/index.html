@@ -88,27 +88,35 @@ Command: Add Water
 <script src="../static/js/chartInit.js"></script>
   <script>
 
-  let size=50;//size of array 
+  let size=5;//size of array 
    
     setInterval(a,100)
     function a(){
-      Update(TemperatureChart)
-      Update(MoistureChart)
-      Update(pHChart)
-      Update(HumidityChart)
-      Update(AQIChart)
+      Update(TemperatureChart,'temperature')
+      Update(MoistureChart,'moisture')
+      Update(pHChart,'ph')
+      Update(HumidityChart,'humidity')
+      Update(AQIChart,'aqi')
     }
-    function Update(chart){
+    function Update(chart,type){
       
-      rand=((Math.random()*2-1)/2)
-      
-      chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(rand+(dataset.data[dataset.data.length-1]));
+
+
+      fetch('/api')
+      .then((response) => response.json())
+      .then((data) => {
+        rand=(data[type]['value'])
+        chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(rand+Math.random());
         if(dataset.data.length>size){
           dataset.data.shift();
         }
      });
      chart.update()
+    });
+      
+
+     
 
 
       
