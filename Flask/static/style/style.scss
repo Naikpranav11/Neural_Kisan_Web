@@ -134,7 +134,8 @@ a{
     width: 40vw;
     overflow: scroll;
 
-  pre{
+  #TerminalTextBox{
+    padding-top: 1.5em;
     font-family: 'Share Tech Mono', monospace;
     width:30rem;
     margin-top: .5rem;

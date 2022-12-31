@@ -1,17 +1,19 @@
 const terminal=document.getElementById('TerminalTextBox')
 const CodeLine=document.getElementById('TerminalLine')
+clk=0
 function createRecord(){ 
     
     fetch('/output')
     .then((response) => response.json())
     .then((data) => {
         highlight=data['option']
-        const line = CodeLine.cloneNode(true) 
-      line.textContent=(data['message'])+'\n'
-      
-      line.className=highlight
-      
-      terminal.appendChild(line)
+        clk++
+
+        CodeLine.textContent=(Math.pow)+'\t'+(data['message'])+'\n'
+        
+        CodeLine.className=highlight
+        
+
   
   });
 

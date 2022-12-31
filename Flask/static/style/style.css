@@ -122,18 +122,19 @@ a:hover {
   width: 39.5vw;
   border-radius: var(--radius) var(--radius) 0 0;
 }
-#Terminal pre {
+#Terminal #TerminalTextBox {
+  padding-top: 1.5em;
   font-family: "Share Tech Mono", monospace;
   width: 30rem;
   margin-top: 0.5rem;
   margin-left: 1rem;
   color: var(--code);
 }
-#Terminal pre::-moz-selection, #Terminal pre span::-moz-selection {
+#Terminal #TerminalTextBox::-moz-selection, #Terminal #TerminalTextBox span::-moz-selection {
   background: rgb(255, 255, 255);
   color: black;
 }
-#Terminal pre::selection, #Terminal pre span::selection {
+#Terminal #TerminalTextBox::selection, #Terminal #TerminalTextBox span::selection {
   background: rgb(255, 255, 255);
   color: black;
 }
