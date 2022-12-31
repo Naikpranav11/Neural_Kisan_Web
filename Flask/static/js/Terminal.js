@@ -9,10 +9,10 @@ function createRecord(){
         highlight=data['option']
         clk++
 
-        CodeLine.textContent=(Math.pow)+'\t'+(data['message'])+'\n'
+        CodeLine.textContent=(clk)+'\t'+(data['message'])+'\n'
         
         CodeLine.className=highlight
-        
+     
 
   
   });

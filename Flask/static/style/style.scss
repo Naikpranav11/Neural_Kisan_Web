@@ -14,21 +14,34 @@
    display: none;
 }
 :root{
-    --base:hsl(0, 0%, 4%);
+    --base:hsl(0, 0%, 91%);
+    --CardBase:hsl(0, 0%, 95%);
+    --headers:#3aff93;
+    --text:#000000;
+    --link:rgb(11, 11, 11);
+    --accent:#000000 ;
+    --radius:.4rem;
+    --Shadowoffset:.0rem;
+    --code:rgb(35, 35, 35);
+    --opacityGraph:.1;
+}
+.dark{
+    --base:hsl(0, 0%, 2%);
     --CardBase:hsl(0, 0%, 2%);
     --headers:hsl(0, 0%, 0%);
     --text:white;
     --link:rgb(177, 200, 248);
     --accent:#00FF6F ;
     --radius:.4rem;
-    --Shadowoffset:.2rem;
+    --Shadowoffset:.3rem;
     --code:rgb(158, 158, 158);
+    --opacityGraph:.04;
 }
 body{
     background: var(--base);
 }
 #bg{
-    --opacityGraph:.04;
+    
     background-size: 2rem 2rem;
     background-image:
     linear-gradient(to right, rgba(128, 128, 128, var(--opacityGraph)) 1px, transparent 1px),
@@ -40,15 +53,18 @@ body{
     width: 100vw;
     height: 100vh;
 }
-
+.material-symbols-outlined{
+    user-select: none;
+    cursor: pointer;
+}
 nav{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
     z-index: 2;
     position: fixed;
     width: 100%;
-    box-shadow: 0 var(--Shadowoffset) 2rem rgba(0, 0, 0, 0.54);
+    // box-shadow: 0 var(--Shadowoffset) 2rem rgba(0, 0, 0, 0.54);
     h1{
         
        
@@ -103,14 +119,14 @@ a{
     
 }
 #monitors{
- 
+
     padding: 1rem;
     padding-right: 0rem;
     display: flex;
     flex-wrap: wrap;
     gap: .8rem;
 
-    width: 56vw;
+    width: 60vw;
 
 }
 #TerminalMonitor{
