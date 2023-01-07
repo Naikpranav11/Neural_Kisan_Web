@@ -10,19 +10,15 @@ function createRecord(){
         clk++
 
         CodeLine.textContent=(clk)+'\t'+(data['message'])+'\n'
-        
-        CodeLine.className=highlight
-     
 
-  
+        CodeLine.className=highlight
+
   });
 
-
-
-
-    
+ 
 }
 setInterval(createRecord,1000)
+
 
 
 
