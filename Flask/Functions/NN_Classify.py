@@ -3,6 +3,7 @@ from PIL import Image
 from torch import nn, save, load
 from torch.optim import Adam
 from torchvision.transforms import ToTensor
+import numpy as np
 
 
 class ImageClassifier(nn.Module): 
@@ -38,11 +39,10 @@ def Classify(imgPath):
     img = Image.open(imgPath) 
     img_tensor = ToTensor()(img).unsqueeze(0).to('cpu')
 
-    return int(
-        str(torch.argmax(clf(img_tensor)))
-        .replace('tensor','')
-        .replace('(','')
-        .replace(')',''))
+    return (
+        np.argmax(clf(img_tensor).detach().numpy()[0]),
+        np.max(clf(img_tensor).detach().numpy()[0])
+        )
 
 
 if __name__ == "__main__": 

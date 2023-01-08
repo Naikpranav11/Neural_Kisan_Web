@@ -61,9 +61,10 @@
 
 
   <div class="card">
-    <h3 class="cardTop">USD/EUR</h3>
+    <h3 class="cardTop">Prediction : <span id="PredictionValue"></span></h3>
     <div>
-      <canvas id="Price"></canvas>
+      <canvas id="Prediction"></canvas>
+      <img src='{{url_for('static', filename='img_3.jpg')}}'id="Image" style="position: absolute;z-index: 100000;"></img>
     </div>
   </div>
 
@@ -87,30 +88,53 @@
   <script src="../static/js/ColorMode.js"></script>
   <script src="../static/js/Menu.js"></script>
 <script src="../static/js/chartInit.js"></script>
-<script src="../static/js/Terminal.js"></script>
+<!-- <script src="../static/js/Terminal.js"></script> -->
   <script>
 
-  let size=50;//size of array 
+  let size=20;//size of array 
    
-    setInterval(a,1000)
+    setInterval(a,100)
     function a(){
       Update(TemperatureChart,'temperature')
       Update(MoistureChart,'moisture')
       Update(pHChart,'ph')
       Update(HumidityChart,'humidity')
       Update(AQIChart,'aqi')
-      Update(Price,'USD/EUR')
+      Update(Prediction,'Prediction')
     }
+
+
+
     function Update(chart,type){
       
+      if(type=='Prediction'){
 
+        let imgsrc='img_3.jpg'
 
-      fetch('/api')
+      fetch('/Classified/'+imgsrc)
       .then((response) => response.json())
       .then((data) => {
-        rand=(data[type]['value'])
+      document.getElementById('PredictionValue').textContent=data['prediction'] +'|' + data['strength']
+        strength=(data['strength'])
         chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(rand+Math.random());
+        dataset.data.push(strength);
+        if(dataset.data.length>size){
+          dataset.data.shift();
+        }
+     });
+     chart.update()
+    });
+
+
+
+      }else{
+
+        fetch('/api')
+      .then((response) => response.json())
+      .then((data) => {
+        value=(data[type]['value'])
+        chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(value);
         if(dataset.data.length>size){
           dataset.data.shift();
         }
@@ -118,6 +142,8 @@
      chart.update()
     });
       
+      }
+
 
      
 

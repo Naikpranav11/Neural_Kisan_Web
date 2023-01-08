@@ -28,7 +28,10 @@ def apiSend(param,cutoff):
 @app.route('/Classified/<i>')
 def Cl(i):
     # 'img_1.jpg'
-    return str(Classify(i))
+    Classification =Classify(i)
+    prediction=int(Classification[0])
+    strength=float(Classification[1])
+    return json.dumps({'prediction': prediction,'strength':strength})
 
 @app.route('/output')
 def Output():
@@ -38,3 +41,7 @@ def Output():
     else:
         highlight=''
     return json.dumps({'message':Instr,'option':highlight})
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
